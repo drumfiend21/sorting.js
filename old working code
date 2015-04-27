@@ -1,0 +1,58 @@
+
+var swapped
+var bubbleSort = function(arr, x) { 
+
+	var left, right
+
+	if(arr.length === 0){
+		
+		return arr
+	}
+
+	if(arr[x] > arr[x+1]){
+		// console.log(arr)
+		swapped = true;
+			left = arr[x];
+			right = arr[x+1];
+
+		arr[x] = right;
+		arr[x+1] = left;
+		// console.log(arr)		
+	}
+
+	if(x === arr.length-1){
+		
+		if(swapped){
+			// console.log("the end")
+			swapped = false;
+			return bubbleSort(arr, 0);
+		}else{
+			// console.log("the end 2")
+			return arr;
+			
+		}
+	}
+
+	var newNum = x+1
+	return bubbleSort(arr, newNum)
+
+}
+
+
+
+var merge = function(arr1, arr2){
+	var result = [];
+	//if(arr1 = 'undefined' || arr2.length){
+		if(arr1[0]>arr2[0]){
+			result.push(arr2[0])
+			nextArr1 = arr1
+			nextArr2 = arr2.slice(1)
+		}else{
+			result.push(arr1[0])
+			nextArr1 = arr1.slice(1)
+			nextArr2 = arr2
+		}
+
+	
+	return result = result.concat(merge(nextArr1, nextArr2))
+}
